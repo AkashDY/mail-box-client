@@ -1,0 +1,1 @@
+export const apiKey = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBoGo-7zM7XoxrDuPNFU2UqwrZK4gDwETQ";
