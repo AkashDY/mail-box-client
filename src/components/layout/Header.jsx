@@ -5,7 +5,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { CgProfile } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { authAction } from "../store/auth";
-
+import "./Header.css";
 
 export default function Header() {
   const auth = useSelector((state) => state.authentication.token);
@@ -17,15 +17,15 @@ export default function Header() {
     navigate("/login");
   };
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar className="navbar" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand>MailBox</Navbar.Brand>
+        <Navbar.Brand className="navbar-brand">MailBox</Navbar.Brand>
 
         <Nav>
           {!auth && (
             <NavLink
-              style={{ textDecoration: "none" }}
-              className={" mx-3 text-light "}
+              className="nav-link"
+              // className={" mx-3 text-light "}
               to={"/signup"}
             >
               Sign Up
@@ -33,16 +33,16 @@ export default function Header() {
           )}
           {!auth && (
             <NavLink
-              className={"mx-3 text-light "}
-              style={{ textDecoration: "none" }}
+              // className={"mx-3 text-light "}
+              className="nav-link"
               to={"login"}
             >
               Log In
             </NavLink>
           )}
-          {auth && <CgProfile className="text-light" />}
+          {auth && <CgProfile className="navbar-text" />}
         </Nav>
-        {auth && <Button onClick={logoutHandler}>Logout</Button>}
+        {auth && <Button className="btn" onClick={logoutHandler}>Logout</Button>}
       </Container>
     </Navbar>
   );

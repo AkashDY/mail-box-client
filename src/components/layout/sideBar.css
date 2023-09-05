@@ -1,14 +1,14 @@
 .sidebar {
-    background-color: gray;
+    background-color: #f6f8fc;
     color: white;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    width: 20%;
-    margin: 10px;
-    height: 86vh;
+    width: 12%;
+    /* margin: 10px; */
+    height: 92.1vh;
   }
-  button {
+  .sButton {
     padding: 1rem;
     width: 100px;
     margin-bottom: 1rem;
