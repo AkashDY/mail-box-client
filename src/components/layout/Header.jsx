@@ -9,6 +9,7 @@ import "./Header.css";
 
 export default function Header() {
   const auth = useSelector((state) => state.authentication.token);
+  const email = useSelector((state) => state.authentication.email);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // console.log("in header", auth);
@@ -17,15 +18,14 @@ export default function Header() {
     navigate("/login");
   };
   return (
-    <Navbar className="navbar" bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand className="navbar-brand">MailBox</Navbar.Brand>
-
+        <Navbar.Brand>MailBox</Navbar.Brand>
         <Nav>
           {!auth && (
             <NavLink
-              className="nav-link"
-              // className={" mx-3 text-light "}
+              style={{ textDecoration: "none" }}
+              className={" mx-3 text-light "}
               to={"/signup"}
             >
               Sign Up
@@ -33,16 +33,21 @@ export default function Header() {
           )}
           {!auth && (
             <NavLink
-              // className={"mx-3 text-light "}
-              className="nav-link"
+              className={"mx-3 text-light "}
+              style={{ textDecoration: "none" }}
               to={"login"}
             >
               Log In
             </NavLink>
           )}
-          {auth && <CgProfile className="navbar-text" />}
+          <div className="d-flex align-items-center justify-content-between  ">
+            {auth && <CgProfile className="text-light" />}
+            {auth && (
+              <div style={{ color: "white", margin: "0.3rem" }}>{email}</div>
+            )}
+          </div>
         </Nav>
-        {auth && <Button className="btn" onClick={logoutHandler}>Logout</Button>}
+        {auth && <Button onClick={logoutHandler}>Logout</Button>}
       </Container>
     </Navbar>
   );

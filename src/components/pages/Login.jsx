@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { authAction } from "../store/auth";
 import { Watch } from "react-loader-spinner";
 
-
 export default function Login() {
   const navigate = useNavigate();
   const emailRef = useRef();
@@ -28,6 +27,7 @@ export default function Login() {
       returnSecureToken: true,
     };
     try {
+      toast.success("login successfully");
       const response = await axios.post(authSignIn, user);
 
       dispatch(

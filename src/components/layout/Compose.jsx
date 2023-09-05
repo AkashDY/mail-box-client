@@ -30,12 +30,15 @@ export default function Compose() {
     const senderEmail = email;
     const subject = subRef.current.value;
     const message = mesRef.current.value;
+    console.log("checking", message);
     //removing . and @ from email so that it can be sent to firebase as data name
     const toMail = toRef.current.value.replace(/[@.]/g, "");
     const composedMail = {
       senderEmail,
       subject,
       message,
+      read: false,
+      time: new Date().toLocaleString("default", { time: "long" }),
     };
     //this is for checking email should be in correct form
     const emailcheck = toRef.current.value;
@@ -62,6 +65,7 @@ export default function Compose() {
       subject,
       message,
       to: toRef.current.value,
+      time: new Date().toLocaleString("default", { time: "long" }),
     };
     try {
       const senderMail = email.replace(/[@.]/g, "");

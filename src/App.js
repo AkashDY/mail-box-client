@@ -10,6 +10,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Route, Routes } from "react-router-dom";
 import User from "./components/pages/User";
 
+
 function App() {
   const mail = useSelector((state) => state.authentication.email);
   // console.log(mail);
