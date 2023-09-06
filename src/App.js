@@ -9,7 +9,8 @@ import { getInbox, getSentMail } from "./components/store/mails";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Route, Routes } from "react-router-dom";
 import User from "./components/pages/User";
-
+import SingleEmailView from "./components/pages/SingleEmailView";
+import Check from "./components/layout/check";
 
 function App() {
   const mail = useSelector((state) => state.authentication.email);
@@ -29,7 +30,10 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forget" element={<Forget />} />
-        <Route path="user" element={<User />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/inbox/:mailId" element={<SingleEmailView/>} />
+        <Route path="/check" element={<Check/>} />
+
       </Routes>
     </div>
   );
