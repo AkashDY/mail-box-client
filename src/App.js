@@ -11,6 +11,8 @@ import { Route, Routes } from "react-router-dom";
 import User from "./components/pages/User";
 import SingleEmailView from "./components/pages/SingleEmailView";
 import Check from "./components/layout/check";
+import { ToastContainer } from "react-bootstrap";
+import SingleSentBox from "./components/pages/SingleSentBox";
 
 function App() {
   const mail = useSelector((state) => state.authentication.email);
@@ -18,6 +20,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getInbox());
+    console.log("use effect run hua");
   }, [mail]);
   useEffect(() => {
     dispatch(getSentMail());
@@ -31,13 +34,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forget" element={<Forget />} />
         <Route path="/user" element={<User />} />
-        <Route path="/inbox/:mailId" element={<SingleEmailView/>} />
-        <Route path="/check" element={<Check/>} />
-
+        <Route path="/inbox/:mailId" element={<SingleEmailView />} />
+        <Route path="/sentbox/:sentId" element={<SingleSentBox />} />
+        <Route path="/check" element={<Check />} />
+        Expand Down
       </Routes>
     </div>
   );
 }
-
 
 export default App;

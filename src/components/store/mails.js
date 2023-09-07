@@ -49,6 +49,22 @@ const mailSlice = createSlice({
     mailSent(state, action) {
       state.sent.push(action.payload);
     },
+    setRealTimeData(state, action) {
+      const transformedData = [];
+      const data = action.payload;
+      console.log(action.payload);
+      for (let item in data) {
+        transformedData.push({
+          id: item,
+          message: data[item].message,
+          senderEmail: data[item].senderEmail,
+          subject: data[item].subject,
+          read: data[item].read,
+          time: data[item].time,
+        });
+      }
+      state.inbox = transformedData;
+    },
 
     userinboxState(state) {
       state.userinbox = true;
