@@ -6,10 +6,9 @@ import HTMLReactParser from "html-react-parser";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import { AiOutlineDelete } from "react-icons/ai";
 import { getInbox } from "../store/mails";
-import { baseAddress } from "../auth/apiKey";
+import { baseAddress } from "../utils/autKey/api";
 import axios from "axios";
 import { toast } from "react-toastify";
-
 function SingleEmailView() {
   const inbox = useSelector((state) => state.mails.inbox);
   const email = useSelector((state) => state.authentication.email).replace(
@@ -22,7 +21,7 @@ function SingleEmailView() {
   const id = params.mailId;
   const data = inbox.find((element) => element.id === id);
   console.log(data);
-  
+
   const goBackToInbox = () => {
     navigate("/user");
   };

@@ -1,12 +1,11 @@
 import React from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
+import "./header.css";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { CgProfile } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { authAction } from "../store/auth";
-import "./Header.css";
-
 export default function Header() {
   const auth = useSelector((state) => state.authentication.token);
   const email = useSelector((state) => state.authentication.email);
@@ -21,6 +20,7 @@ export default function Header() {
     <Navbar bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>MailBox</Navbar.Brand>
+
         <Nav>
           {!auth && (
             <NavLink

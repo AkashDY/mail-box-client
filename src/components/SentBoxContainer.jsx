@@ -2,13 +2,12 @@ import React from "react";
 import "./sentBoxContainer.css";
 import { useNavigate } from "react-router-dom";
 import HTMLReactParser from "html-react-parser";
-
 function SentBoxContainer(props) {
   const navigate = useNavigate();
 
   console.log(props);
   function view() {
-    navigate(`/sendbox/${props.id}`);
+    navigate(`/sentbox/${props.id}`);
   }
   return (
     <div className="sentBoxContiner" onClick={view}>

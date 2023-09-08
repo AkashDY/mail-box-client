@@ -7,9 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import { baseAddress } from "../auth/apiKey";
+import { baseAddress } from "../utils/autKey/api";
 import { getSentMail } from "../store/mails";
-
 function SingleSentBox() {
   const sentBox = useSelector((state) => state.mails.sent);
   const params = useParams();

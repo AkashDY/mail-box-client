@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { baseAddress } from "../auth/apiKey";
+import { baseAddress } from "../utils/autKey/api";
+
 
 export const getSentMail = createAsyncThunk(
   "getSentMails",
@@ -21,6 +22,7 @@ export const getSentMail = createAsyncThunk(
 export const getInbox = createAsyncThunk(
   "getInbox",
   async (data, { rejectWithValue }) => {
+    console.log("getInbox run hua");
     let email = localStorage.getItem("email");
     email = email.replace(/[@.]/g, "");
     console.log(email);
@@ -65,7 +67,6 @@ const mailSlice = createSlice({
       }
       state.inbox = transformedData;
     },
-
     userinboxState(state) {
       state.userinbox = true;
       state.compose = false;
@@ -114,7 +115,10 @@ const mailSlice = createSlice({
           time: data[item].time,
         });
       }
-
+      //sorting emails according to time
+      transformedData.sort((a, b) => {
+        return new Date(b.time) - new Date(a.time);
+      });
       state.sent = transformedData;
     },
     [getSentMail.rejected]: (state) => {
@@ -144,6 +148,10 @@ const mailSlice = createSlice({
           time: data[item].time,
         });
       }
+      //sorting emails according to time
+      transformedData.sort((a, b) => {
+        return new Date(b.time) - new Date(a.time);
+      });
       // const transformedData = Object.values(action.payload).map((item) => {
       //   return {
       //     message: item.message,

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import SideBar from "../layout/SideBar";
-import Compose from "../layout/Compose";
-import UserInbox from "../layout/UserInbox";
-import UserSentBox from "../layout/UserSentBox";
+import SideBar from "../components/SideBar";
+import Compose from "../components/Compose";
+import UserInbox from "../components/UserInbox";
+import UserSentBox from "../components/UserSentBox";
 import { useSelector } from "react-redux";
 import "./user.css";
-
-
 function User() {
   const { compose, userinbox, sentmail } = useSelector((state) => state.mails);
 

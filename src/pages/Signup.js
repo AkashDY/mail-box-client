@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Card, InputGroup, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { authSingUp, baseAddress } from "../auth/apiKey";
+import { authSingUp, baseAddress } from "../utils/autKey/api";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,7 +9,6 @@ import { Watch } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { authAction } from "../store/auth";
-
 export default function Signup() {
   const emailRef = useRef();
   const pasRef = useRef();

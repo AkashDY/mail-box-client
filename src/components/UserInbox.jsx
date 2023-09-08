@@ -4,6 +4,7 @@ import InboxContainer from "./InboxContainer";
 
 function UserInbox() {
   const inbox = useSelector((state) => state.mails.inbox);
+
   const inboxItems = inbox.map((item) => {
     return (
       <InboxContainer
@@ -25,7 +26,6 @@ function UserInbox() {
         flexDirection: "column",
         alignItems: "center",
       }}
-    
     >
       <h2 style={{ alignItems: "center" }}>Inbox</h2>
       {inboxItems}

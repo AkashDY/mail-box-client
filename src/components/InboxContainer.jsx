@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsDot } from "react-icons/bs";
-import { baseAddress } from "../auth/apiKey";
-import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
+import { baseAddress } from "../utils/autKey/api";
+import { useDispatch, useSelector } from "react-redux";
 import HTMLReactParser from "html-react-parser";
+import axios from "axios";
 import { getInbox, mailsAction } from "../store/mails";
-
 function InboxContainer(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -66,9 +65,11 @@ function InboxContainer(props) {
         alert("something went wrong");
       }
     }
+
     let path = `/inbox/${props.id}`;
     navigate(path);
   };
+
   //removing p tag from text
   const msg = HTMLReactParser(props.message);
   console.log("msg", msg);
@@ -92,4 +93,5 @@ function InboxContainer(props) {
     </>
   );
 }
+
 export default InboxContainer;

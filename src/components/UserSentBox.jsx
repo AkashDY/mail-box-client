@@ -16,7 +16,6 @@ function UserSentBox() {
       />
     );
   });
-
   return (
     <div
       style={{

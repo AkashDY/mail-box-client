@@ -4,11 +4,10 @@ import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { AiOutlineSend } from "react-icons/ai";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
-import { baseAddress } from "../auth/apiKey";
+import { baseAddress } from "../utils/autKey/api";
 import { ToastContainer, toast } from "react-toastify";
 import { mailsAction } from "../store/mails";
 import { useDispatch } from "react-redux";
-
 export default function Compose() {
   const toRef = useRef("");
   const subRef = useRef("");
@@ -16,16 +15,13 @@ export default function Compose() {
   let email = useSelector((state) => state.authentication.email);
   console.log(email);
   const dispatch = useDispatch();
-
   function jd() {
     console.log(mesRef.current.value);
   }
-
   const config = {
     placeholder: "Enter Email",
     buttons: ["bold", "italic", "underline", "link", "unlink", "source"],
   };
-
   const emailSubmitHandler = async () => {
     const senderEmail = email;
     const subject = subRef.current.value;
